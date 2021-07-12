@@ -1,0 +1,25 @@
+<div class="flex flex-col lg:flex-row">
+  <section class="order-2 lg:order-1">
+    <h2 class="text-indigo-600 text-3xl font-bold mb-6">All Notes</h2>
+    <% if @notes.length == 0 %>
+      <div>Oh no! You have no notes. Click the button over to your right to add one.</div>
+    <% else %>
+      <ul class="pl-6">
+        <% @notes.each do |note| %>
+          <li class="mb-4 list-disc">
+            <a href="<%= note_path(note) %>" class="text-gray-600 text-xl font-bold transition-colors duration-100 hover:text-black">
+              <%= note.title %>
+            </a>
+            <p class="text-gray-300"><small>Last updated at <%= note.updated_at %></small></p>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </section>
+
+  <section class="order-1 lg:order-2 lg:ml-auto">
+    <a href="notes/new" class="bg-indigo-600 hover:bg-indigo-500 transition-colors duration-150 px-4 py-2 rounded-lg text-white font-bold">+ Add Note</a>
+  </section>
+
+  
+</div>
