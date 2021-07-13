@@ -4,6 +4,8 @@
     <h2 class="text-indigo-600 font-bold text-3xl mb-6"><%= @note.title %></h2>
 
     <p class="text-lg text-gray-700"><%= @note.body %></p>
+    
+    <%= render "comments", note: @note %>
   </section>
 
   <section class="lg:ml-auto">
