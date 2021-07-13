@@ -1,18 +1,26 @@
-<div  class="max-w-lg bg-gray-50 px-6 py-6 rounded-lg shadow">
-  <%= form_with model: @note do |form| %>
+<div class="max-w-lg bg-gray-50 px-6 py-6 rounded-lg shadow">
+  <%= form_with model: @note, local: true do |form| %>
     <div class="mb-6">
-      <%= form.label :title %><br>
+      <%= form.label :title %>
       <%= form.text_field :title, autofocus: true, class: "mt-2 block bg-white border border-gray-300 text-sm w-full px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" %>
-      <% @note.errors.full_messages_for(:title).each do |message| %>
-        <div><%= message %></div>
+      <% if @note.errors.full_messages_for(:title).length > 0 %>
+        <div class="bg-red-100 p-3 rounded mt-2">
+          <% @note.errors.full_messages_for(:title).each do |message| %>
+            <p class="text-red-700"><%= message %></p>
+          <% end %>
+        </div>
       <% end %>
     </div>
 
     <div class="mb-6">
-      <%= form.label :body %><br>
+      <%= form.label :body %>
       <%= form.text_area :body, class: "mt-2 block bg-white border border-gray-300 text-sm w-full px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" %>
-      <% @note.errors.full_messages_for(:body).each do |message| %>
-        <div><%= message %></div>
+      <% if @note.errors.full_messages_for(:body).length > 0 %>
+        <div class="bg-red-100 p-3 rounded mt-2">
+          <% @note.errors.full_messages_for(:body).each do |message| %>
+            <p class="text-red-700"><%= message %></p>
+          <% end %>
+        </div>
       <% end %>
     </div>
 
