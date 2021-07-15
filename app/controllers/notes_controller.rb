@@ -37,6 +37,12 @@ class NotesController < ApplicationController
 
   def destroy
     @note = Note.find(params[:id])
+
+    # Remove the note's comments if it has any
+    @note.comments.all.each do |comment| 
+      comment.destroy
+    end
+
     @note.destroy
 
     redirect_to root_path
